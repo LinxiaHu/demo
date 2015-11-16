@@ -10,5 +10,6 @@ using namespace std;
 class LinuxSystemDemo {
 public:
 	LinuxSystemDemo(){};
+	~LinuxSystemDemo(){};
 	int pipeTest();
 };

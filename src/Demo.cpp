@@ -11,6 +11,11 @@
 int main() {
 	LinuxSystemDemo *l1 = new LinuxSystemDemo();
 	l1->pipeTest();
+	printf("---------------------------\n");
+//	size_t t; // long unsigned int
+//	t = 999999999;
+//	printf("t=%d\n", t);
+
 
 	return 0;
 }
