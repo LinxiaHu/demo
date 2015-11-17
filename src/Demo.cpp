@@ -1,47 +1,66 @@
 //============================================================================
 // Name        : Demo.cpp
 // Author      : Chunyun
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Version     : 0.0.1
+// Copyright   : hd
+// Description : Linux系统编程
 //============================================================================
 
 #include "inc/demo.h"
 
 int main() {
-	LinuxSystemDemo *l1 = new LinuxSystemDemo();
+	LinuxSystemDemo *l1 = new LinuxSystemDemo(); // 在堆上创建对象，返回指针
 	l1->pipeTest();
+
 	printf("---------------------------\n");
 	size_t t; // long unsigned int
 	t = 999999999;
 	printf("t=%d\n", t);
 
+	printf("---------------------------\n");
+	int *a = (int *) xmalloc(100);
+	printf("a数组的地址是：%p\n", a);
+	delete a;
+
+	printf("---------------------------\n");
+	int pageSize = l1->getPageSize();
+	printf("操作系统页面大小是：%d\n", pageSize);
+
+	printf("---------------------------\n");
+	l1->forkT();
 
 	return 0;
 }
 
 //全局函数开始
 
-
-
-
-
+//封装的内存分配函数
+void *xmalloc(size_t size) {
+	void *p;
+	p = malloc(size);
+	if (!p) {
+		perror("xmalloc");
+		exit(EXIT_FAILURE);
+	}
+	return p;
+}
 
 //全局函数结束
 
-
-
-
-
-
-
 //类方法开始
+
+//返回操作系统页面大小
+int LinuxSystemDemo::getPageSize() {
+	return getpagesize();
+}
+//IPC管道
 int LinuxSystemDemo::pipeTest() {
 
 	int pipe_fd[2]; //管道的read end和write end
 	pid_t child_pid; //子进程
 	char pipe_buf; //管道数据
 	memset(pipe_fd, 0, sizeof(int) * 2); //初始化
+//	child_pid = fork();
 
 	if (pipe(pipe_fd) == -1) { //通过pipe接口打开管道，pipe_fd[0]和pipe_fd[1]分别代表读和写端
 		return -1;
@@ -67,4 +86,19 @@ int LinuxSystemDemo::pipeTest() {
 	}
 
 	return 0;
+}
+
+//fork测试
+void LinuxSystemDemo::forkT() {
+	int i;
+	for (i = 0; i < 2; i++) {
+		fork();
+		printf("ppid=%d,pid=%d,i=%d\n", getppid(), getpid(), i); //getpid()返回当前线程pid,getppid()返回父进程pid
+	}
+	sleep(10);
+}
+
+//mmap操作
+void LinuxSystemDemo::memoryMap() {
+
 }

@@ -10,7 +10,7 @@
 #include <linux/fs.h>
 #include <linux/errno.h>
 #include <linux/sched.h>
-//驱动设备头文件，在/usr/src中，eclipse无法找到
+//驱动设备头文件，在/usr/src中，暂时无法加入include路径
 //#include <linux/module.h>
 //#include <linux/mm.h>
 //#include <linux/init.h>
@@ -21,9 +21,17 @@
 
 using namespace std;
 
+//全局函数声明开始
+void *xmalloc(size_t size); //封装内存分配函数
+//全局函数声明结束
+
+
 class LinuxSystemDemo {
 public:
 	LinuxSystemDemo(){};
 	~LinuxSystemDemo(){};
+	void forkT();// fork()测试
+	int getPageSize();// 返回操作系统页面大小
 	int pipeTest();// IPC管道
+	void memoryMap();// mmap使用
 };
