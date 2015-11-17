@@ -12,14 +12,30 @@ int main() {
 	LinuxSystemDemo *l1 = new LinuxSystemDemo();
 	l1->pipeTest();
 	printf("---------------------------\n");
-//	size_t t; // long unsigned int
-//	t = 999999999;
-//	printf("t=%d\n", t);
+	size_t t; // long unsigned int
+	t = 999999999;
+	printf("t=%d\n", t);
 
 
 	return 0;
 }
 
+//全局函数开始
+
+
+
+
+
+
+//全局函数结束
+
+
+
+
+
+
+
+//类方法开始
 int LinuxSystemDemo::pipeTest() {
 
 	int pipe_fd[2]; //管道的read end和write end
