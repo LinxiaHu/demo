@@ -4,7 +4,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/ioctl.h>
 //驱动设备头文件
 #include <linux/types.h>
 #include <linux/fs.h>
@@ -30,6 +32,7 @@ class LinuxSystemDemo {
 public:
 	LinuxSystemDemo(){};
 	~LinuxSystemDemo(){};
+	int fileSys();// file stat测试
 	void forkT();// fork()测试
 	int getPageSize();// 返回操作系统页面大小
 	int pipeTest();// IPC管道

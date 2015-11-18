@@ -26,8 +26,11 @@ int main() {
 	int pageSize = l1->getPageSize();
 	printf("操作系统页面大小是：%d\n", pageSize);
 
+//	printf("---------------------------\n");
+//	l1->forkT();
+
 	printf("---------------------------\n");
-	l1->forkT();
+	l1->fileSys();
 
 	return 0;
 }
@@ -88,6 +91,21 @@ int LinuxSystemDemo::pipeTest() {
 	return 0;
 }
 
+//file stat 测试
+int LinuxSystemDemo::fileSys() {
+	struct stat sb;
+	int ret;
+	ret = stat("/usr/local/hive/bin/hive", &sb);
+	if(ret) {
+		perror("stat");
+		return 1;
+	}
+	printf("/usr/local/hive/bin/hive's size is %ld bytes\n", sb.st_size);
+	return 0;
+}
+
+
+
 //fork测试
 void LinuxSystemDemo::forkT() {
 	int i;
@@ -95,7 +113,7 @@ void LinuxSystemDemo::forkT() {
 		fork();
 		printf("ppid=%d,pid=%d,i=%d\n", getppid(), getpid(), i); //getpid()返回当前线程pid,getppid()返回父进程pid
 	}
-	sleep(10);
+	sleep(1);
 }
 
 //mmap操作
