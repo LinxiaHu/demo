@@ -32,6 +32,9 @@ int main() {
 	printf("---------------------------\n");
 	l1->fileSys();
 
+	printf("---------------------------\n");
+	l1->memoryMap();
+
 	return 0;
 }
 
@@ -118,5 +121,15 @@ void LinuxSystemDemo::forkT() {
 
 //mmap操作
 void LinuxSystemDemo::memoryMap() {
-
+	int fd;
+	void *start;
+	struct stat sb;//保存文件的状态
+	fd = open("/etc/passwd", O_RDONLY);
+	fstat(fd, &sb);//关联fd和state结构体
+	start = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);// 映射
+	if(start == MAP_FAILED) {
+		return;
+	}
+	printf("%s\n", start);
+	munmap(start, sb.st_size);// 解除映射
 }
