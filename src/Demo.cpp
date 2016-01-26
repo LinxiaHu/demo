@@ -89,9 +89,18 @@ int main() {
 	cout << endl;
 	cout << "中序遍历二叉树:" << endl;
 	inorder(bt);
+	cout << endl;
 
 // 二叉树遍历算法结束
 
+// 开始测试转换函数
+	double d;
+	string salary;
+	string s = "12.56";
+	d = convert<double>(s); //d等于12.56
+	salary = convert<string>(9000.0); //salary等于”9000”
+	cout<< "d=" <<d <<endl;
+	cout<<"salary=" <<salary <<endl;
 	return 0;
 }
 
@@ -99,6 +108,23 @@ int main() {
 void test1() {
 
 	printf("输出来自test1全局函数！\n");
+}
+
+// 类型转函数
+template<class T>
+void to_string(string &result, const T &t) {
+	ostringstream oss; //创建一个流
+	oss << t; //把值传递如流中
+	result = oss.str(); //获取转换后的字符转并将其写入result
+}
+
+template<class out_type, class in_value>
+out_type convert(const in_value &t) {
+	stringstream stream;
+	stream << t; //向流中传值
+	out_type result; //这里存储转换结果
+	stream >> result; //向result中写入值
+	return result;
 }
 
 //二叉树高度，非递归算法，基于中序遍历

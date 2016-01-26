@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stack>
 #include <string.h>
+#include <sstream>
 using namespace std;
 
 class Demo {
@@ -58,6 +59,12 @@ void inorder(BTNode *bt);
 //实现trim函数
 #define IS_SPACE(c)  ((c) == ' ' || (c) == '\t')
 char* mytrim(char *);
+// 类型转换函数
+template<class T>
+void to_string(string, T);
+template<class out_type, class in_value>
+out_type convert(const in_value & t);
+
 // 结构体
 
 typedef struct {
