@@ -99,8 +99,19 @@ int main() {
 	string s = "12.56";
 	d = convert<double>(s); //d等于12.56
 	salary = convert<string>(9000.0); //salary等于”9000”
-	cout<< "d=" <<d <<endl;
-	cout<<"salary=" <<salary <<endl;
+	cout << "d=" << d << endl;
+	cout << "salary=" << salary << endl;
+// redis函数举例:32bit mix function
+	unsigned int iredis1 = 9;
+	unsigned int iresult1 = dictIntHashFunction(iredis1);
+	cout << "iresult1=" << iresult1 << endl;
+
+
+
+
+
+
+
 	return 0;
 }
 
@@ -125,6 +136,17 @@ out_type convert(const in_value &t) {
 	out_type result; //这里存储转换结果
 	stream >> result; //向result中写入值
 	return result;
+}
+
+// resis函数举例
+unsigned int dictIntHashFunction(unsigned int key) {
+	key += ~(key << 15);
+	key ^= (key >> 10);
+	key += (key << 3);
+	key ^= (key >> 6);
+	key += ~(key << 11);
+	key ^= (key >> 16);
+	return key;
 }
 
 //二叉树高度，非递归算法，基于中序遍历

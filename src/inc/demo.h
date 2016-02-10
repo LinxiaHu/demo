@@ -64,6 +64,8 @@ template<class T>
 void to_string(string, T);
 template<class out_type, class in_value>
 out_type convert(const in_value & t);
+// redis函数举例
+unsigned int dictIntHashFunction(unsigned int );
 
 // 结构体
 
