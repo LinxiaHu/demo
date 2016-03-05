@@ -28,6 +28,8 @@ using namespace std;
 
 //全局函数声明开始
 void *xmalloc(size_t size); //封装内存分配函数
+void myexecl(); //execl函数的使用
+
 //全局函数声明结束
 
 

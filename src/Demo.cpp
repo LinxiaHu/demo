@@ -35,6 +35,9 @@ int main() {
 	printf("---------------------------\n");
 	l1->memoryMap();
 
+	//excel函数测试
+	myexecl();
+
 	return 0;
 }
 
@@ -49,6 +52,15 @@ void *xmalloc(size_t size) {
 		exit(EXIT_FAILURE);
 	}
 	return p;
+}
+
+//execl函数测试
+void myexecl() {
+	int ret;
+	ret = execl("/bin/vi", "vi", "/home/hadoop/nctest-ssb/demo.cpp", NULL);
+	if(-1 == ret) {
+		perror("execl");
+	}
 }
 
 //全局函数结束
