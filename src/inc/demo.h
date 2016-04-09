@@ -25,11 +25,11 @@ protected:
 
 class Person: Demo {
 public:
-	Persion(int id, string addr, string name) :
+	Person(int id, string addr, string name) :
 			id(id), address(addr), Demo(name) { // 父类构造器必须调用
 		printf("Persion class created!\n");
 	}
-	~Persion() {
+	~Person() {
 		printf("Persion class destroyed!\n");
 	}
 	void speack(string phrase);
