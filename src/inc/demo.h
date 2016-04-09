@@ -23,7 +23,7 @@ protected:
 	string name;
 };
 
-class Persion: Demo {
+class Person: Demo {
 public:
 	Persion(int id, string addr, string name) :
 			id(id), address(addr), Demo(name) { // 父类构造器必须调用

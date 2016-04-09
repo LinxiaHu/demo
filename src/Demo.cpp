@@ -276,7 +276,7 @@ void Demo::say() {
 	printf("My name is:%s\n", this->name.c_str());
 }
 
-void Persion::speack(string phrase) {
+void Person::speack(string phrase) {
 	cout << phrase << endl;
 	cout << "My name is :" << this->name << endl;
 	cout << "My address is :" << this->address << endl;
