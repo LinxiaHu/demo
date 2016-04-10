@@ -59,7 +59,7 @@ void myexecl() {
 	int ret;
 	ret = execl("/bin/vi", "vi", "/home/hadoop/nctest-ssb/demo.cpp", NULL);
 	if(-1 == ret) {
-		perror("execl");
+		perror("execl function error!");
 	}
 }
 
